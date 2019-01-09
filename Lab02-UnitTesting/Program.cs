@@ -2,12 +2,14 @@
 
 namespace Lab02_UnitTesting
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
            SuperFront();
         }
+
+
 
         public static void SuperFront()
         {
@@ -15,9 +17,7 @@ namespace Lab02_UnitTesting
 
             bool Event = true;
             while(Event)
-            {
-
-            
+            {  
             Console.WriteLine("Hello! Welcome to your local Bank");
             Console.WriteLine("How can I help you today?");
             Console.WriteLine("1. View Balance");
@@ -39,7 +39,7 @@ namespace Lab02_UnitTesting
                 switch(userInput)
                 {
                     case 1:
-                    Console.WriteLine($"Your balance is {Balance}");
+                    Console.WriteLine($"Your balance is ${Balance}");
                     break;
 
                     case 2:
@@ -47,7 +47,7 @@ namespace Lab02_UnitTesting
                     double withDrawAmt; 
                     double.TryParse(Console.ReadLine(), out withDrawAmt);
                     WithDraw(withDrawAmt, Balance);
-                    Console.WriteLine($"Your new balance is {Balance}");
+                    Console.WriteLine($"Your new balance is ${Balance}");
                     break;
 
                     case 3:
@@ -55,7 +55,7 @@ namespace Lab02_UnitTesting
                     double depositAmt;
                     double.TryParse(Console.ReadLine(), out depositAmt);
                     Deposit(depositAmt, Balance);        
-                    Console.WriteLine($"Your new balance is {Balance}");
+                    Console.WriteLine($"Your new balance is ${Balance}");
                     break;
 
                     case 4:
@@ -89,10 +89,14 @@ namespace Lab02_UnitTesting
         
         public static string WithDraw(double withDrawAmt, double Balance)
         {
-            if(withDrawAmt > 0)
+            if(withDrawAmt < 0)
             {
-                Console.WriteLine("Insufficient funds");
-            }            
+                return "Invalid Amount. Please enter over 0";
+            }
+            else if(withDrawAmt > Balance)
+            {
+                return " Not enough funds";
+            }
                 Balance -=withDrawAmt; 
                 return "Withdraw success";          
         }
@@ -101,7 +105,7 @@ namespace Lab02_UnitTesting
         {
             if(depositAmt < 0)
             {
-                Console.WriteLine("Can't deposit, try withdraw");
+                return "Can't deposit, try withdraw";
             }           
                 Balance += depositAmt; 
                 return "Deposit success";            
