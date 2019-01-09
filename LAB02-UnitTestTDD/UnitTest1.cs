@@ -15,7 +15,7 @@ namespace LAB02_UnitTestTDD
             //Act
 
             //Asserted
-            Assert.Equal("Invalid Amount. Please enter over 0", Program.WithDraw(value, valNext));
+            Assert.Equal(3000, Program.WithDraw(value, valNext));
         }
 
         [Theory]
@@ -23,7 +23,7 @@ namespace LAB02_UnitTestTDD
 
         public void DepositTest(double a, double b)
         {
-            Assert.Equal("Deposit success", Program.Deposit(a,b));
+            Assert.Equal(3200, Program.Deposit(a,b));
         }
     }
 }
