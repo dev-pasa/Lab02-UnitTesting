@@ -11,3 +11,8 @@ Add Money (not standard, but for this exercise it will be….) =	- Keep asking the
 1. Clone the repo using this link: https://github.com/dev-pasa/Lab02-UnitTesting.git
 2. Open the repo using VS Code
 3. Run the application without debugger.
+
+##Images
+markup: ![Balance](/Assets/Balance.JPG)
+markup: ![Deposit](/Assets/Deposit.JPG)
+markup: ![Withdraw](/Assets/Withdraw.JPG)

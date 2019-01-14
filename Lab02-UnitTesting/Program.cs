@@ -9,7 +9,9 @@ namespace Lab02_UnitTesting
            SuperFront();
         }
 
-
+        /// <summary>
+        /// This is the main function that will be passes in the Main. This has all other methods inside of it. 
+        /// </summary>
         public static void SuperFront()
         {
 
@@ -47,33 +49,30 @@ namespace Lab02_UnitTesting
                     double withDrawAmt; 
                     double.TryParse(Console.ReadLine(), out withDrawAmt);
 
-                        //if (withDrawAmt > Balance)
-                        //{
-                        //    Console.WriteLine("Withdraw amount greater than balance");
-                        //}
-                        //else
-                        //{
-                        //    Balance = WithDraw(withDrawAmt, Balance);
-                        //}
-                        try
+                        if (withDrawAmt > Balance)
+                        {
+                            Console.WriteLine("Withdraw amount greater than balance");
+                        }
+                        else
                         {
                             Balance = WithDraw(withDrawAmt, Balance);
                         }
-                        catch
-                        {
-                            
-                        }
+                       
+                        
                         Console.WriteLine($"Your balance is ${Balance}");
                     break;
 
                     case 3:
                     Console.WriteLine("How much would you like to deposit");
-                    double depositAmt;
+                    
                     
                         try
                         {
-                            double.TryParse(Console.ReadLine(), out depositAmt);
+                            string deposit = Console.ReadLine();
+                            double depositAmt;
+                            double.TryParse(deposit, out depositAmt);
                             Balance = Deposit(depositAmt, Balance);
+
                             Console.WriteLine($"Your balance is ${Balance}");
                         }
                         catch 
@@ -110,6 +109,12 @@ namespace Lab02_UnitTesting
             }
          }
         
+        /// <summary>
+        /// This function substracts the amount of money withdrawn
+        /// </summary>
+        /// <param name="withDrawAmt"></param>
+        /// <param name="Balance"></param>
+        /// <returns></returns>
         public static double WithDraw(double withDrawAmt, double Balance)
         {
             if(withDrawAmt < 0)
@@ -124,13 +129,19 @@ namespace Lab02_UnitTesting
                 return Balance;          
         }
 
+        /// <summary>
+        /// This methods adds the deposit to the balance. 
+        /// </summary>
+        /// <param name="depositAmt"></param>
+        /// <param name="Balance"></param>
+        /// <returns></returns>
         public static double Deposit(double depositAmt, double Balance)
         {
             if(depositAmt < 0)
             {
                 return 0;
             }           
-                Balance += depositAmt;
+            Balance += depositAmt;
             return Balance;            
         }
 
