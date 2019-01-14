@@ -12,6 +12,7 @@ namespace LAB02_UnitTestTDD
             //Arrange
             double value = -100; double valNext = 3000;
 
+
             //Act
 
             //Asserted

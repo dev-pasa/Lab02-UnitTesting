@@ -23,7 +23,7 @@ namespace Lab02_UnitTesting
             Console.WriteLine("How can I help you today?");
             Console.WriteLine("1. View Balance");
             Console.WriteLine("2. Withdraw Money");
-            Console.WriteLine("3. Add Money");
+            Console.WriteLine("3. Deposit Money");
             Console.WriteLine("4. Cancel Transaction");
             int userInput = Int32.Parse(Console.ReadLine());
 
@@ -43,27 +43,44 @@ namespace Lab02_UnitTesting
                     break;
 
                     case 2:
-                    Console.WriteLine("How much would you like to withdraw");
+                    Console.WriteLine("How much would you like to withdraw?");
                     double withDrawAmt; 
                     double.TryParse(Console.ReadLine(), out withDrawAmt);
-                    
-                    if(withDrawAmt > Balance)
-                        {
-                            Console.WriteLine("Withdraw amount greater than balance");
-                        }
-                        else
+
+                        //if (withDrawAmt > Balance)
+                        //{
+                        //    Console.WriteLine("Withdraw amount greater than balance");
+                        //}
+                        //else
+                        //{
+                        //    Balance = WithDraw(withDrawAmt, Balance);
+                        //}
+                        try
                         {
                             Balance = WithDraw(withDrawAmt, Balance);
                         }
-                    Console.WriteLine($"Your balance is ${Balance}");
+                        catch
+                        {
+                            
+                        }
+                        Console.WriteLine($"Your balance is ${Balance}");
                     break;
 
                     case 3:
                     Console.WriteLine("How much would you like to deposit");
                     double depositAmt;
-                    double.TryParse(Console.ReadLine(), out depositAmt);
-                    Balance = Deposit(depositAmt, Balance);        
-                    Console.WriteLine($"Your balance is ${Balance}");
+                    
+                        try
+                        {
+                            double.TryParse(Console.ReadLine(), out depositAmt);
+                            Balance = Deposit(depositAmt, Balance);
+                            Console.WriteLine($"Your balance is ${Balance}");
+                        }
+                        catch 
+                        {
+                            
+                        } 
+                                      
                     break;
 
                     case 4:
